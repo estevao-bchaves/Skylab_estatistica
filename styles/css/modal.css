@@ -1,0 +1,166 @@
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 300px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+  
+.modal-header {
+    padding: 20px 16px;
+    background: linear-gradient(to top right, rgb(1, 99, 127),rgb(0, 112, 122), rgb(54, 129, 136),rgb(80, 181, 190), rgb(145, 211, 216));
+    color: white;
+    font-size: 20px;
+    font-family: 'Tahoma', 'Verdana', 'Comic Sans MS', 'Fredericka the Great', cursive;
+    font-weight: bolder;
+    border-top-left-radius: 2ch;
+    border-top-right-radius: 2ch;
+    text-align: center;
+}
+  
+.modal-body {
+    padding: 20px 8px;
+    font-size: 16px;
+    font-family: 'Tahoma', 'Verdana', 'Comic Sans MS', 'Fredericka the Great', cursive;
+    font-weight: bolder;
+    text-align: center;
+}
+  
+.modal-big {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 200px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    border-radius: 5ch;
+    margin: auto;
+    padding: 0;
+    border: px solid  rgb(48, 116, 143);
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+  
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: rgb(89, 202, 246);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .modal {
+        padding-top: 200px
+    }
+
+    .modal-content {
+        width: 65%;
+    }
+    
+    .modal-body {
+        width: 300px
+      }
+
+    .close {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        padding-top: 200px
+    }
+
+    .modal-content {
+        width: 65%;
+    }
+    
+    .modal-body {
+        width: 380px
+      }
+
+    .close {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal {
+        padding-top: 200px
+    }
+
+    .modal-content {
+        width: 560px;
+    }
+    
+    .modal-body {
+        width: 550px;
+        padding-right: 30px 
+    }
+
+    .close {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .modal {
+        padding-top: 200px
+    }
+
+    .modal-content {
+        width: 560px;
+    }
+    
+    .modal-body {
+        width: 550px;
+        padding-right: 30px 
+    }
+
+    .close {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,266 @@
+img {
+    display: flex
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.layout {
+    position: absolute;
+    margin: 300px;
+    margin-top: 200px;
+    width: 70%;
+    height: 40%;
+}
+
+.box {
+    display: inline-block;
+    border: solid;
+    border-color: rgb(89, 202, 246);
+    width: 420px;
+    height: 600px;
+    margin-right: 15px;
+    border-radius: 50px;
+    background: linear-gradient(to bottom left, transparent 20%, white 50%),
+                radial-gradient(white, #e9f5f8, rgba(21, 105, 116, 0.267));
+}
+
+.index-icon {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    margin: 20px 30px 20px 100px;
+    width: 200px;
+    height: 200px;
+}
+
+/*Bordas colocadas somente para referência. Retirá-las após ajustar*/
+.card-text-box{
+    position: absolute;
+    margin-top: 250px;
+    width: 420px;
+    height: 300px;
+}
+
+.card-title{
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    font-family: 'Tahoma', 'Verdana', 'Comic Sans MS', 'Fredericka the Great', cursive;
+}
+
+.card-description{
+    margin-top: 30px;
+    padding: 4ch;
+    position: relative;
+    text-align: justify;
+    font-size: 20px;
+    border-top: solid rgba(89, 202, 246, 0.39);
+    border-radius: 30px;
+    font-family: 'Tahoma', 'Verdana', 'Comic Sans MS', 'Fredericka the Great', cursive;
+    line-height: 1.5;
+}
+
+section {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* background: rgba(21, 105, 116, 0.109); */
+}
+
+#iframe {
+    overflow: hidden;
+}
+
+#main {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: rgba(21, 105, 116, 0.109);
+} 
+
+@media screen and (max-width: 480px) {
+    header {
+        width: 100%;
+    }
+
+    .layout {
+        width: 150px;
+        height: 1000px
+    }
+
+    .box {
+        width: 350px;
+        height: 300px;
+        margin-left: -225px;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        display: block;
+    }
+
+    .index-icon {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 20px;
+    }
+    
+    /*Bordas colocadas somente para referência. Retirá-las após ajustar*/
+    .card-text-box{
+        margin-top: 150px;
+        width: 350px;
+        height: 150px;
+    }
+    
+    .card-title{
+        font-size: 30px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .card-description{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        width: 100%;
+    }
+
+    .layout {
+        width: 150px;
+        height: 1300px
+    }
+
+    .box {
+        width: 450px;
+        height: 400px;
+        margin-left: -200px;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        display: block;
+    }
+
+    .index-icon {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 20px;
+        margin-left: 150px
+    }
+    
+    /*Bordas colocadas somente para referência. Retirá-las após ajustar*/
+    .card-text-box{
+        margin-top: 150px;
+        width: 450px;
+        height: 250px;
+    }
+    
+    .card-title{
+        font-size: 30px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .card-description{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        width: 100%
+    }
+
+    .layout {
+        width: 150px;
+        height: 1300px
+    }
+
+    .box {
+        width: 450px;
+        height: 400px;
+        margin-left: -130px;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        display: block;
+    }
+
+    .index-icon {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 20px;
+        margin-left: 150px
+    }
+    
+    /*Bordas colocadas somente para referência. Retirá-las após ajustar*/
+    .card-text-box{
+        margin-top: 150px;
+        width: 450px;
+        height: 250px;
+    }
+    
+    .card-title{
+        font-size: 30px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .card-description{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        width: 100%
+    }
+
+    .layout {
+        width: 150px;
+        height: 1300px
+    }
+
+    .box {
+        width: 450px;
+        height: 400px;
+        margin-left: -10px;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        display: block;
+    }
+
+    .index-icon {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 20px;
+        margin-left: 150px
+    }
+    
+    /*Bordas colocadas somente para referência. Retirá-las após ajustar*/
+    .card-text-box{
+        margin-top: 150px;
+        width: 450px;
+        height: 250px;
+    }
+    
+    .card-title{
+        font-size: 30px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .card-description{
+        font-size: 16px;
+    }
+}

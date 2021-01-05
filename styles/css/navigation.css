@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header {
+    z-index: 2;
+    overflow: hidden;
+    background: linear-gradient(to top right, rgb(1, 99, 127),rgb(0, 112, 122), rgb(54, 129, 136),rgb(80, 181, 190), rgb(145, 211, 216));
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 140px
+}
+
+.nav-icon{
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.open-menu-icon {
+    position: absolute;
+    display: block;
+    margin-top: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+header .logo{
+    margin-left: 30px;
+    margin-top: 5px;
+    background-image: url("../icons/logo-white.png");
+    background-size: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-indent: -999999px;
+    width: 500px;
+    height: 140px;
+    
+}
+
+header .logo:hover{
+    cursor: pointer
+}
+
+header .hamburguer {
+    margin-left: 80px;
+    margin-top: 40px;
+    display: block;
+    background-image: url("../icons/menu-icon.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 65px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    /* float: left; */
+}
+
+header .hamburguer:hover {
+    background-image: url('../icons/menu-icon-hover.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 65px;
+    background-color: transparent;
+    cursor: pointer
+
+}
+
+.sidenav {
+    margin-top: 140px;
+    height: 100%; /* 100% Full-height */
+    width: 30px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: linear-gradient(to bottom, rgb(1, 99, 127),rgb(0, 112, 122), rgb(54, 129, 136));
+    /* background: linear-gradient(rgb(0, 104, 0),rgb(0, 124, 0), rgba(0, 180, 0, 0.685), rgb(255, 255, 255));*/
+    overflow: hidden; /* Disable horizontal scroll */
+    padding-top: 0px; /* Place content 60px from the top */
+    transition: .5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 70px 8px 8px 32px;
+    /* font-family: 'Anton', sans-serif; */
+    font-family: 'Tahoma', 'Verdana', 'Comic Sans MS', 'Fredericka the Great', cursive;
+    /* font-family: 'Alfa Slab One', cursive; */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: block;
+    align-content: center;
+    transition: 0.5s;
+}
+
+/* When your mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: rgb(196, 211, 202);
+    font-size: 24px;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .close-btn {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 150px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    margin-bottom: 50px
+}
+
+@media screen and (max-width: 480px) {
+    header .logo {
+        width: 430px;
+        height: 140px
+    }
+
+    header {
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    header .logo {
+        width: 350px;
+        height: 140px;
+        margin-left: 10px
+    }
+
+    header {
+        width: 100%;
+        height: 140px
+    }
+}

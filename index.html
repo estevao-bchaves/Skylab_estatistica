@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skylab Statistical System</title>
+    <link rel='stylesheet' href='./styles/css/navigation.css'>
+    <link rel='stylesheet' href='./styles/css/index.css'>
+    <link rel="shortcut icon" href="./styles/icons/slingshot.ico" type="image/x-icon" />
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Fredericka+the+Great&display=swap" rel="stylesheet"> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header id='header'>         
+        <a href="index.html" target='_self'><label class='logo'></label></a>
+        <hr>
+    </header>
+
+    <nav id="side-nav" class="sidenav" onmouseover="openSideBar()" onmouseout="closeSideBar()">
+        <img id='open-menu-icon' type='button' class='open-menu-icon' src="./styles/icons/icon-hamburger.png">
+
+        <ul>
+            <li><a href="javascript:void(0)" class="close-btn"></a></li>
+            <li><a href="index.html" target='_self'>
+                <div>
+                    <img id='icon-home' type='button' class='nav-icon' src="./styles/icons/icon-home.png">
+                    <div style='margin-left: 50px'>Home</div>
+                </div>            
+            </a></li>
+            <li><a href='./pages/descriptive.html' target='main' onclick='hideHome()'>
+                <div>
+                    <img id='icon-home' type='button' class='nav-icon' src="./styles/icons/icon-descriptive.png">
+                    <div style='margin-left: 50px'>Descritiva</div>
+                </div>
+            </a></li>
+            <li><a href="./pages/probability.html" target='main' onclick='hideHome()'>
+                <div>
+                    <img id='icon-home' type='button' class='nav-icon' src="./styles/icons/icon-probability2.png">
+                    <div style='margin-left: 50px'>Probabilidade</div>
+                </div>
+            </a></li>
+            <li><a href="./pages/correlation.html" target='main' onclick='hideHome()'>
+                <div>
+                    <img id='icon-home' type='button' class='nav-icon' src="./styles/icons/icon-correlation.png">
+                    <div style='margin-left: 50px'>Correlação</div>
+                </div>
+            </a></li>
+            <li><a href="./pages/about.html" target='main' onclick='hideHome()'>
+                <div>
+                    <img id='icon-home' type='button' class='nav-icon' src="./styles/icons/icon-about.png">
+                    <div style='margin-left: 50px'>Sobre</div>
+                </div>
+            </a></li>
+        </ul>
+    </nav>
+    
+    <div id='layout' class='layout'>
+        <div class='box'>
+            <div>
+                <a href='./pages/descriptive.html' target='main' onclick='hideHome()' style='cursor: pointer'>
+                    <img id='icon-prob' type='button' class='index-icon' src="./styles/icons/icon-descriptive.png">
+                </a>
+            </div>
+
+            <div class='card-text-box'>
+                <div class='card-title'><b>Descritiva</b></div><br>
+                <div class='card-description'>
+                    Estatística descritiva aplica técnicas para descrever e sumarizar um conjunto de dados.
+                    Ao inserir um conjunto, será obtido uma tabela, um gráfico, média, moda(s), mediana, medidas separatrizes, desvio padrão e variância.
+                </div>
+            </div>
+        </div>
+
+        <div class='box'>
+            <div>
+                <a href='./pages/probability.html' target='main' onclick='hideHome()'>
+                    <img id='icon-prob' type='button' class='index-icon' src="./styles/icons/icon-probability.png">
+                </a>
+            </div>
+
+            <div class='card-text-box'>
+                <div class='card-title'><b>Probabilidade</b></div><br>
+                <div class='card-description'>
+                    Probabilidade é o estudo das chances de obtenção de cada resultado de um experimento aleatório.
+                    O usuário poderá escolher o tipo de distribuição a ser calculada dentre distribuição binomial, normal ou uniforme. 
+                </div>
+            </div>
+        </div>
+
+        <div class='box'>
+            <div>
+                <a href='./pages/correlation.html' target='main' onclick='hideHome()'>
+                    <img id='icon-prob' type='button' class='index-icon' src="./styles/icons/icon-correlation.png">
+                </a>
+            </div>
+            
+            <div class='card-text-box'>
+                <div class='card-title'><b>Correlação</b></div><br>
+                <div class='card-description'>
+                    Correlação é qualquer relação dentro de uma ampla classe de relações
+                    estatísticas que envolva dependência entre duas variáveis. O usuário poderá ainda
+                    inserir uma variável para estimar valores dentro da função de correlação obtida.
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <div id='main'>
+        <section>
+            <iframe name='main' width='100%' height='100%' style='border:none'></iframe>
+        </section>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    <script src='./scripts/editor-html/navigation.js'></script>  
+</body>
+</html>

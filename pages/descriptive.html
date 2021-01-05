@@ -1,0 +1,284 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SKYLAB - Descritiva</title>
+    <link rel="stylesheet" href="../styles/css/main.css">
+    <link rel="stylesheet" href="../styles/css/modal.css">
+    <link rel="stylesheet" href="../styles/css/table.css">
+    <link rel="stylesheet" href="../styles/css/chart.css">
+    <link rel="stylesheet" href="../styles/css/buttons.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+</head>
+
+<body class='body'>
+    <section>
+        <div>
+            <div class='import-box'>
+                <label for='import-select' class='label-form'><b>Como deseja importar os dados?</b></label><br>
+                <select id='import-select' name='import-select' class='select'>
+                    <option selected=""></option>
+                    <option value="hand">Manualmente</option>
+                    <option value="file">Utilizando um arquivo</option>
+                </select>
+            </div>
+
+            <form id='file-form' onsubmit="return readFile()" style='display:none'>
+                <div class='input-box' style="height: 70px;">
+                    <label for='input-file' class='btn' style="padding: 8px 16px; font-size: 12px;"><b>Selecionar arquivo (.csv)</b></label>
+
+                        <input required type='file' id='input-file' name='input-file' class='upload-btn' accept=".csv">
+                        <img id='help-csv' type='button' class='help-btn' style='margin: 0 0 0 20px' src="../styles/icons/quest-icon.png">
+
+                </div>
+
+                <div>
+                    <label for='file-scope' class='label-form'><b>Tipo do conjunto de valores:</b></label><br>
+                    <input type='radio' id='file-scope' name='file-scope' value="amostra" class="radio"checked> Amostra
+                    <input type='radio' id='file-scope' name='file-scope' value="populacao" class="radio"> População
+                    <!-- <img id='help-scope' type='button' class='help-btn' style="margin-left: 10px;" src="../styles/icons/quest-icon.png"> -->
+                </div>
+                <br><br>
+
+                <div>
+                    <label for='file-measures' class='label-form'><b>Selecione a medida separatriz: </b> </label><br>
+                    <select name="file-measures" id="file-measures" class="select" onchange="partMeasureForm(this.id, 'file-part-measure')">
+                        <h3>Medida</h3>
+                        <option value=""></option>
+                        <option value="quartil">Quartil</option>
+                        <option value="quintil">Quintil</option>
+                        <option value="decil">Decil</option>
+                        <option value="percentil">Percentil</option>
+                    </select>
+                    <!-- <img id='help-position' type='button' class='help-btn' style="margin: 0 0 0 60px;" src="../styles/icons/quest-icon.png"> -->
+                    <select name="file-part-measure" id="file-part-measure" class="select"></select><br>
+
+                </div><br>
+
+                <button id='btn-file' type="submit" class="btn"> Calcular </button>
+            </form>
+
+
+            <form id='hand-form' onsubmit="return btnCalculate()" style='display:none'>
+                <div class='input-box'>
+                    <label for='var-name' class='label'><b>Nome da variável:</b></label><br>
+                    <div>
+                        <input type='text' id='var-name' name='var-name' size='60px' class="input" placeholder="Identifique sua variável">
+                        <br><img id='help-name' type='button' class='help-btn' src="../styles/icons/quest-icon.png">
+                    </div>
+
+                </div><br>
+
+                <div class='input-box'>
+                    <label for='var-values' class='label'><b>Dados:</b></label><br>
+                    <div>
+                        <input required type='text' id="var-values" name='var-values' size="60px" class="input" placeholder="Separados por , (vírgula)">
+                        <br><img id='help-data' type='button' class='help-btn' src="../styles/icons/quest-icon.png">
+                    </div>
+                </div><br><br>
+
+                <div class='input-box'>
+                    <label for='hand-scope' class='label-form'><b>Tipo do conjunto de valores: </b> </label><br>
+                    <input type='radio' id='hand-scope' name='hand-scope' value="amostra" class="radio"checked> Amostra
+                    <input type='radio' id='hand-scope' name='hand-scope' value="populacao" class="radio"> População
+                    <img id='help-scope' type='button' class='help-btn' style="margin-left: 10px;" src="../styles/icons/quest-icon.png">
+                </div><br>
+
+                <div class='input-box'>
+                    <label for='hand-measures' class='label-form'><b>Selecione a medida separatriz: </b> </label><br>
+                    <select name="hand-measures" id="hand-measures" class="select" onchange="partMeasureForm(this.id, 'hand-part-measure')">
+                        <h3>Medida</h3>
+                        <option value=""></option>
+                        <option value="quartil">Quartil</option>
+                        <option value="quintil">Quintil</option>
+                        <option value="decil">Decil</option>
+                        <option value="percentil">Percentil</option>
+                    </select>
+                    <select name="hand-part-measure" id="hand-part-measure" class="select"></select>
+                    <img id='help-position' type='button' class='help-btn' style="margin-left: 10px;" src="../styles/icons/quest-icon.png"><br><br>
+                </div><br>
+
+                <button id='btn-calculate' type="submit" class="btn"> Calcular </button>
+            </form>
+
+            <div>
+                <p id='explanation' class='textTitle'></p>
+            </div>
+            </div>
+
+            <table id="results" class='table'></table>
+            <div id='frequency-organizer'style="display: none">
+                <div  class="onoffswitch" >
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange="change(this)" tabindex="0" >
+                    <label class="onoffswitch-label" for="myonoffswitch"></label>
+                </div>
+                <h3>Organizar tabela por frequência</h3>
+                <br>
+            </div>
+
+            <br><br>
+
+            <div id='results-title' class='results-title'></div><br>
+                <div id='graph-and-values' class='graph-and-values' style='display: none'>
+
+                    <div class="statistical-values">
+                        <h3 id='mean'></h3>
+                        <h3 id='mode'></h3>
+                        <h3 id='median'></h3>
+                        <h3 id='measure'></h3>
+                        <h3 id='standard-deviation'></h3>
+                        <h3 id='variance'></h3>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="chart"></canvas>
+                    </div>
+                </div>
+
+                <form id='search-form' style='display: none'>
+                    <div class='input-box'>
+                        <h3>Filtrar um valor do conjunto de dados:</h3>
+                            <input required type='text' id='search-value' name='search-value' size='5px' class="input-form" placeholder="0">
+                            <button id='search-calculate' type='button' class='btn' onclick='btnSearch();
+                            document.getElementById("search-result").scrollIntoView({behavior: "smooth"});'>Filtrar</button>
+                        </div>
+                    </div>
+                    <div id="search-result" class="search-result" style="display: none">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--Modal-->
+        <div>
+            <div id="modal-name" class="modal" display='none'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                       Nome da variável
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Identifica sua variável. Em geral utiliza-se um substantivo. </p>
+                        <p>Exemplo: Vendas. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-data" class="modal" display='none'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        Descritiva - Dados
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Valores de sua variável.<p> A separação dos valores deverá ser feita por " , " (vírgula).</p>
+                        <p>Podem ser inseridos valores qualitativos (nomes) e/ou quantitativos (números).</p>
+                        <p>Utilize " . " (ponto) para inserir as casas decimais dos valores numéricos
+                            (caso haja necessidade).</p>
+                        <p>Ex: 1, 2, 42.01, Rogério,  Fátima.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-position" class="modal" display='none'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        Descritiva - Medida separatriz
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Divide a distribuição dos dados em várias partes, permitindo observar quais valores se encontram em seus extremos.
+                        Selecione a medida separatriz desejada e, em seguida, a parte que deseja observar:</p>
+                        <p>Quartil: Divide a distribuição em 4 partes. </p>
+                        <p>Quintil: Divide a distribuição em 5 partes.</p>
+                        <p>Decil: Divide a distribuição em 10 partes.</p>
+                        <p>Percentil: Divide a distribuição em 100 partes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-scope" class="modal" display='none'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        Descritiva - Tipo do Conjunto de Dados
+                    </div>
+                    <div class="modal-body">
+                        <p>Seleciona se os dados inseridos são:
+                             <p>- Amostra (parte de um conjunto maior)</p>
+                            <p>- População (todo o conjunto)</p>
+                            (Obrigatório)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-csv" class="modal" display='none'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        Descritiva - Selecione um arquivo .csv
+                    </div>
+                    <div class="modal-body">
+                        <p>Importe os dados buscando um arquivo do formato .csv direto do seu computador.
+                            É importante ressaltar que o primeiro valor deve conter o nome da variável.
+                        </p>
+                        <p>
+                            Ex: Notas, 1, 1, 1, 5, 5, 10, 9, 8, 1
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src='../scripts/editor-html/resetDescriptive.js'></script>
+    <script src='../scripts/editor-html/tables.js'></script>
+    <script src='../scripts/editor-html/statisticalVariables.js'></script>
+    <script src='../scripts/editor-html/navigation.js'></script>
+
+    <script src='../scripts/forms/form-descriptive-partMeasure.js'></script>
+    <script src='../scripts/forms/form-descriptive.js'></script>
+
+    <script src='../scripts/chart/chart-descriptive.js'></script>
+    <script src='../scripts/chart/chart-descriptive-options.js'></script>
+
+
+    <script src='../scripts/organize/frequencies.js'></script>
+    <script src='../scripts/organize/csv-to-array.js'></script>
+    <script src='../scripts/organize/quick-sort.js'></script>
+
+    <script src='../scripts/search/search-binary.js'></script>
+
+    <script src='../scripts/btn/btn-calculate.js'></script>
+    <script src='../scripts/btn/btn-organize.js'></script>
+    <script src='../scripts/btn/btn-search.js'></script>
+
+
+    <script src='../scripts/read/read-input.js'></script>
+    <script src='../scripts/read/read-file.js'></script>
+    <script src='../scripts/read/read-table.js'></script>
+    <script src='../scripts/read/read-type.js'></script>
+
+    <script src='../scripts/calc/statisticalVariables/mean.js'></script>
+    <script src='../scripts/calc/statisticalVariables/mode.js'></script>
+    <script src='../scripts/calc/statisticalVariables/median.js'></script>
+    <script src='../scripts/calc/statisticalVariables/measures-of-position.js'></script>
+    <script src='../scripts/calc/statisticalVariables/standard-deviation.js'></script>
+
+    <script src='../scripts/modal/modal-descriptive-input.js'></script>
+    <script src='../scripts/modal/modal-descriptive-name.js'></script>
+    <script src='../scripts/modal/modal-descriptive-scope.js'></script>
+    <script src='../scripts/modal/modal-descriptive-position.js'></script>
+    <script src='../scripts/modal/modal-descriptive-csv.js'></script>
+
+
+</body>
+</html>
