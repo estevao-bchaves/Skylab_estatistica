@@ -1,7 +1,7 @@
 # Skylab - Statistical System 
 Trabalho de Estatística, FATEC 2020
 
-## Link: https://rafaellaporte.github.io/skylab/
+## Link:  https://rslaporte.github.io/skylab/
 
 Este é um projeto multidisciplinar, que abarca as disciplinas de Estatística, Engenharia de  Software  II,  Estrutura  de  Dados e  Interação  Humano  Computador.  Consiste  no desenvolvimento de um  software para  cálculos  estatísticos, abarcando alguns tópicos referentes à estatística descritiva,  probabilidade  e  correlação.
 
